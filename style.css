@@ -297,11 +297,9 @@ p {
 
   .brand-name {
     justify-self: center;
-
-    font-size: 19px;
-
+    font-size: 17px;
     letter-spacing: -0.02em;
-  }
+}
 
   .main-nav {
     gap: 1px;
