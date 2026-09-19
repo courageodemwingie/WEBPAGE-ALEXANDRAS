@@ -601,12 +601,10 @@ p {
   min-width: 0;
 }
 
-.bouquet-image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: var(--soft-blush);
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
 }
 
 .bouquet-image img {
@@ -614,12 +612,11 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   transition: transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 
-.bouquet-image:hover img {
-  transform: scale(1.045);
+.bouquet-card:hover .bouquet-image img {
+  transform: scale(1.03);
 }
 
 /* =========================
