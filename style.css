@@ -735,7 +735,172 @@ p {
     font-size: 14px;
     line-height: 1.8;
 }
+.gift-items-collection {
+    margin-bottom: 110px;
+}
 
+.gift-items-collection .collection-heading {
+    margin-bottom: 30px;
+}
+
+.gift-items-collection .collection-heading p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-family: var(--body-font);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.gift-items-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    max-width: 920px;
+}
+
+.gift-item {
+    text-align: center;
+}
+
+.gift-item-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--soft-blush);
+}
+
+.gift-item-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gift-item p {
+    margin: 12px 0 0;
+    color: var(--burgundy);
+    font-family: var(--body-font);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+    .gift-items-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+        gap: 22px 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .gift-items-collection {
+        margin-bottom: 80px;
+    }
+
+    .gift-items-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px 12px;
+        max-width: 100%;
+    }
+
+    .gift-item p {
+        font-size: 10px;
+        margin-top: 9px;
+    }
+}
+.plant-collection {
+    margin-bottom: 110px;
+}
+
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.plant-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--soft-blush);
+}
+
+.plant-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.2, .65, .3, 1);
+}
+
+.plant-card:hover .plant-image img {
+    transform: scale(1.03);
+}
+
+.plant-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 58px;
+    padding: 12px 13px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--burgundy);
+    font-family: var(--body-font);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: background-color .25s ease;
+}
+
+.plant-info:hover {
+    background: var(--soft-blush);
+}
+
+@media (max-width: 1000px) {
+    .plant-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .plant-collection {
+        margin-bottom: 80px;
+    }
+
+    .plant-grid {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding-right: 25px;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .plant-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .plant-card {
+        flex: 0 0 64%;
+        scroll-snap-align: start;
+    }
+
+    .plant-image {
+        aspect-ratio: 4 / 5;
+    }
+
+    .plant-info {
+        min-height: 54px;
+        padding: 11px 12px;
+        font-size: 10px;
+    }
+}
 
 /* =========================
    BRIDAL BUTTON
