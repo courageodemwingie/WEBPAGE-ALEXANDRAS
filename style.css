@@ -285,7 +285,7 @@ p {
   .header-inner {
     min-height: 66px;
     padding: 0 14px;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
   }
 
   .header-logo img {
@@ -300,9 +300,11 @@ p {
     padding: 0 8px;
   }
 
- .main-nav {
+.main-nav {
+  display: flex;
   gap: 0;
-  margin-left: 0;
+  justify-self: end;
+  flex-shrink: 0;
 }
 
   .nav-item {
