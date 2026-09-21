@@ -300,10 +300,10 @@ p {
     padding: 0 8px;
   }
 
-  .main-nav {
-    gap: 0;
-    margin-left: 8px;
-  }
+ .main-nav {
+  gap: 0;
+  margin-left: 0;
+}
 
   .nav-item {
     width: 25px;
