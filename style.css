@@ -301,14 +301,14 @@ p {
     letter-spacing: -0.02em;
 }
 
-  .main-nav {
-    gap: 1px;
-  }
+ .main-nav {
+  gap: 0;
+}
 
-  .nav-item {
-    width: 29px;
-    height: 29px;
-  }
+.nav-item {
+  width: 25px;
+  height: 29px;
+}
 
   .nav-item svg {
     width: 15px;
