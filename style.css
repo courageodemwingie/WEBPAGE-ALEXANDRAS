@@ -503,47 +503,13 @@ p {
     font-size: 10px;
   }
 }
-
 /* ========================================
    SECTION HEADING
 ======================================== */
 
 .section-heading {
-  max-width: 700px;
-  margin-bottom: 60px;
-}
-
-.section-heading > p:last-child {
-  max-width: 540px;
-  margin-top: 22px;
-  color: var(--muted);
-}
-
-/* =========================
-   COLLECTIONS
-========================= */
-
-.collections {
-  padding: 120px 0;
-  background: var(--cream);
-}
-
-/* =========================
-   COLLECTIONS
-========================= */
-
-.collections {
-  padding: 120px 0;
-  background: var(--cream);
-}
-
-/* =========================
-   SECTION INTRO
-========================= */
-
-.section-heading {
   max-width: 650px;
-  margin-bottom: 100px;
+  margin-bottom: 45px;
 }
 
 .section-eyebrow {
@@ -576,30 +542,140 @@ p {
 }
 
 /* =========================
+   COLLECTIONS
+========================= */
+
+/* =========================
+   COLLECTIONS
+========================= */
+
+.collections {
+  width: 100%;
+  padding: 120px 0;
+  background: var(--cream);
+  box-sizing: border-box;
+}
+
+.collections > .container {
+  width: min(calc(100% - 80px), var(--container-width));
+  max-width: var(--container-width);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+@media (max-width: 640px) {
+  .collections > .container {
+    width: calc(100% - 28px);
+    max-width: none;
+  }
+}
+
+/* =========================
+   COLLECTION NOTICE
+========================= */
+
+.collection-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 520px;
+  min-width: 0;
+
+  margin: 0 0 80px auto;
+  padding: 14px 16px;
+
+  box-sizing: border-box;
+
+  background: var(--soft-blush);
+  border: 1px solid var(--burgundy);
+}
+
+.collection-notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+  margin-top: 1px;
+
+  border: 1px solid var(--burgundy);
+  border-radius: 50%;
+
+  color: var(--burgundy);
+
+  font-family: var(--body-font);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.collection-notice-content {
+  min-width: 0;
+}
+
+.collection-notice-label {
+  margin: 0 0 4px;
+
+  color: var(--burgundy);
+
+  font-family: var(--body-font);
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.collection-notice-content > p:last-child {
+  margin: 0;
+
+  color: var(--text);
+
+  font-family: var(--body-font);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================
    COLLECTION
 ========================= */
 
 .lookbook-collection {
+  width: 100%;
+  min-width: 0;
   margin-bottom: 110px;
 }
 
 .collection-heading {
+  width: 100%;
+  min-width: 0;
   margin-bottom: 28px;
 }
 
 .collection-heading h3 {
   margin: 0;
+
   color: var(--burgundy);
+
   font-family: var(--heading-font);
   font-size: clamp(34px, 4vw, 50px);
   font-weight: 700;
+
   line-height: 1.05;
   letter-spacing: -0.025em;
 }
 
 .collection-price {
   margin: 10px 0 0;
+
   color: var(--burgundy);
+
   font-family: var(--body-font);
   font-size: 13px;
   font-weight: 600;
@@ -611,8 +687,15 @@ p {
 
 .lookbook-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
+
+  box-sizing: border-box;
 }
 
 /* =========================
@@ -620,20 +703,34 @@ p {
 ========================= */
 
 .bouquet-card {
+  width: 100%;
   min-width: 0;
+  max-width: 100%;
+
+  box-sizing: border-box;
 }
 
-.lookbook-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+.bouquet-image {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: var(--soft-blush);
 }
 
 .bouquet-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   transition: transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 
@@ -649,10 +746,16 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+
+  width: 100%;
+  min-width: 0;
+
+  gap: 12px;
 
   min-height: 62px;
   padding: 13px 16px;
+
+  box-sizing: border-box;
 
   background: var(--white);
   border: 1px solid var(--border);
@@ -666,19 +769,23 @@ p {
 }
 
 .bouquet-info h4 {
+  min-width: 0;
   margin: 0;
 
   color: var(--burgundy);
+
   font-family: var(--heading-font);
   font-size: 22px;
   font-weight: 500;
+
   line-height: 1.1;
 }
 
 .bouquet-info span {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 
   color: var(--burgundy);
+
   font-family: var(--body-font);
   font-size: 11px;
   font-weight: 600;
@@ -690,42 +797,12 @@ p {
 }
 
 /* =========================
-   BRIDAL
+   GIFT ITEMS
 ========================= */
 
-.bridal-lookbook {
-  margin-top: 20px;
-  padding-top: 100px;
-
-  border-top: 1px solid var(--border);
-}
-
-.bridal-heading {
-  max-width: 620px;
-  margin-bottom: 45px;
-}
-
-.bridal-heading h3 {
-  margin: 0 0 20px;
-
-  color: var(--burgundy);
-  font-family: var(--heading-font);
-  font-size: clamp(40px, 5vw, 60px);
-  font-weight: 500;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-}
-
-.bridal-heading > p:not(.section-eyebrow) {
-  max-width: 500px;
-  margin: 0 0 28px;
-
-  color: var(--muted);
-  font-family: var(--body-font);
-  font-size: 14px;
-  line-height: 1.8;
-}
 .gift-items-collection {
+  width: 100%;
+  min-width: 0;
   margin-bottom: 110px;
 }
 
@@ -735,7 +812,9 @@ p {
 
 .gift-items-collection .collection-heading p {
   margin: 8px 0 0;
+
   color: var(--muted);
+
   font-family: var(--body-font);
   font-size: 13px;
   line-height: 1.6;
@@ -743,84 +822,97 @@ p {
 
 .gift-items-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+
+  width: 100%;
   max-width: 920px;
+  min-width: 0;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
+
+  box-sizing: border-box;
 }
 
 .gift-item {
+  min-width: 0;
   text-align: center;
 }
 
 .gift-item-image {
   width: 100%;
   aspect-ratio: 1 / 1;
+
   overflow: hidden;
+
   background: var(--soft-blush);
 }
 
 .gift-item-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
 .gift-item p {
   margin: 12px 0 0;
+
   color: var(--burgundy);
+
   font-family: var(--body-font);
   font-size: 11px;
   font-weight: 500;
+
   line-height: 1.4;
 }
 
-@media (max-width: 900px) {
-  .gift-items-grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 600px;
-    gap: 22px 18px;
-  }
-}
+/* =========================
+   PLANTS
+========================= */
 
-@media (max-width: 640px) {
-  .gift-items-collection {
-    margin-bottom: 80px;
-  }
-
-  .gift-items-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px 12px;
-    max-width: 100%;
-  }
-
-  .gift-item p {
-    font-size: 10px;
-    margin-top: 9px;
-  }
-}
 .plant-collection {
+  width: 100%;
+  min-width: 0;
   margin-bottom: 110px;
 }
 
 .plant-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
+
+  box-sizing: border-box;
+}
+
+.plant-card {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .plant-image {
   width: 100%;
   aspect-ratio: 4 / 5;
+
   overflow: hidden;
+
   background: var(--soft-blush);
 }
 
 .plant-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   transition: transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 
@@ -832,16 +924,27 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
+  min-width: 0;
+
   min-height: 58px;
   padding: 12px 13px;
+
+  box-sizing: border-box;
+
   background: var(--white);
   border: 1px solid var(--border);
+
   color: var(--burgundy);
+
   font-family: var(--body-font);
   font-size: 10px;
   font-weight: 500;
+
   line-height: 1.4;
   text-decoration: none;
+
   transition: background-color 0.25s ease;
 }
 
@@ -849,47 +952,48 @@ p {
   background: var(--soft-blush);
 }
 
-@media (max-width: 1000px) {
-  .plant-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+/* =========================
+   BRIDAL
+========================= */
+
+.bridal-lookbook {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 20px;
+  padding-top: 100px;
+
+  border-top: 1px solid var(--border);
 }
 
-@media (max-width: 640px) {
-  .plant-collection {
-    margin-bottom: 80px;
-  }
+.bridal-heading {
+  width: 100%;
+  max-width: 620px;
+  margin-bottom: 45px;
+}
 
-  .plant-grid {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding-right: 25px;
-    padding-bottom: 6px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
+.bridal-heading h3 {
+  margin: 0 0 20px;
 
-  .plant-grid::-webkit-scrollbar {
-    display: none;
-  }
+  color: var(--burgundy);
 
-  .plant-card {
-    flex: 0 0 64%;
-    scroll-snap-align: start;
-  }
+  font-family: var(--heading-font);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 500;
 
-  .plant-image {
-    aspect-ratio: 4 / 5;
-  }
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
 
-  .plant-info {
-    min-height: 54px;
-    padding: 11px 12px;
-    font-size: 10px;
-  }
+.bridal-heading > p:not(.section-eyebrow) {
+  max-width: 500px;
+  margin: 0 0 28px;
+
+  color: var(--muted);
+
+  font-family: var(--body-font);
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 /* =========================
@@ -909,6 +1013,7 @@ p {
   font-family: var(--body-font);
   font-size: 11px;
   font-weight: 600;
+
   letter-spacing: 0.04em;
   text-decoration: none;
 
@@ -932,24 +1037,34 @@ p {
 
 .bridal-gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
 
   width: 100%;
   max-width: 1080px;
+  min-width: 0;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+
+  box-sizing: border-box;
 }
 
 .bridal-image {
   width: 100%;
+  min-width: 0;
+
   aspect-ratio: 4 / 5;
+
   overflow: hidden;
+
   background: var(--soft-blush);
 }
 
 .bridal-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 
   transition: transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
@@ -968,6 +1083,10 @@ p {
     padding: 90px 0;
   }
 
+  .collections > .container {
+    width: min(100% - 40px, var(--container-width));
+  }
+
   .section-heading {
     margin-bottom: 70px;
   }
@@ -978,6 +1097,17 @@ p {
 
   .lookbook-grid {
     gap: 12px;
+  }
+
+  .gift-items-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 600px;
+    gap: 22px 18px;
+  }
+
+  .plant-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .bridal-lookbook {
@@ -999,12 +1129,26 @@ p {
     overflow: hidden;
   }
 
+  .collections > .container {
+    width: calc(100% - 28px);
+    max-width: none;
+  }
+
   .section-heading {
-    margin-bottom: 55px;
+    margin-bottom: 40px;
   }
 
   .section-heading h2 {
     font-size: 43px;
+  }
+
+  /* Collection notice */
+
+  .collection-notice {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 60px;
+    padding: 14px;
   }
 
   /* Collection headings */
@@ -1031,6 +1175,11 @@ p {
 
   .lookbook-grid {
     display: flex;
+
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
     gap: 12px;
 
     overflow-x: auto;
@@ -1038,6 +1187,8 @@ p {
 
     padding-right: 25px;
     padding-bottom: 6px;
+
+    box-sizing: border-box;
 
     scroll-snap-type: x mandatory;
 
@@ -1051,14 +1202,19 @@ p {
 
   .bouquet-card {
     flex: 0 0 78%;
+    min-width: 0;
+    max-width: 78%;
+
     scroll-snap-align: start;
   }
 
   .bouquet-image {
+    width: 100%;
     aspect-ratio: 4 / 5;
   }
 
   .bouquet-info {
+    width: 100%;
     min-height: 60px;
     padding: 13px 14px;
   }
@@ -1068,6 +1224,76 @@ p {
   }
 
   .bouquet-info span {
+    font-size: 10px;
+  }
+
+  /* Gift items */
+
+  .gift-items-collection {
+    margin-bottom: 80px;
+  }
+
+  .gift-items-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 100%;
+    gap: 22px 12px;
+  }
+
+  .gift-item p {
+    font-size: 10px;
+    margin-top: 9px;
+  }
+
+  /* Plants */
+
+  .plant-collection {
+    margin-bottom: 80px;
+  }
+
+  .plant-grid {
+    display: flex;
+
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-right: 25px;
+    padding-bottom: 6px;
+
+    box-sizing: border-box;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .plant-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .plant-card {
+    flex: 0 0 64%;
+    min-width: 0;
+    max-width: 64%;
+
+    scroll-snap-align: start;
+  }
+
+  .plant-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .plant-info {
+    width: 100%;
+    min-height: 54px;
+    padding: 11px 12px;
     font-size: 10px;
   }
 
@@ -1088,12 +1314,20 @@ p {
 
   .bridal-gallery {
     display: flex;
+
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+
     gap: 12px;
 
     overflow-x: auto;
+    overflow-y: hidden;
 
     padding-right: 25px;
     padding-bottom: 6px;
+
+    box-sizing: border-box;
 
     scroll-snap-type: x mandatory;
 
@@ -1107,11 +1341,15 @@ p {
 
   .bridal-image {
     flex: 0 0 62%;
+    min-width: 0;
+    max-width: 62%;
+
     aspect-ratio: 4 / 5;
 
     scroll-snap-align: start;
   }
 }
+
 /* =========================================
    LOCATIONS
 ========================================= */
