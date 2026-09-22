@@ -5,6 +5,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* ========================================
+       HERO SLIDER
+    ======================================== */
+
     const heroSlider = new Swiper(".hero-slider", {
 
         loop: true,
@@ -36,29 +40,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ========================================
        FLOATING WHATSAPP
-       Show when Collections is reached
+       Show from Roses through Collections
     ======================================== */
 
-    const collectionsSection = document.querySelector("#collections");
+    const rosesSection = document.querySelector("#bouquet-arrangements");
+    const bridalSection = document.querySelector("#bridal-lookbook");
     const whatsappButton = document.querySelector(".whatsapp-float");
 
-    if (collectionsSection && whatsappButton) {
+    if (rosesSection && whatsappButton) {
 
-        const whatsappObserver = new IntersectionObserver(
-            ([entry]) => {
+        const checkWhatsAppVisibility = () => {
 
-                whatsappButton.classList.toggle(
-                    "is-visible",
-                    entry.isIntersecting
-                );
+            const scrollPosition = window.scrollY + (window.innerHeight * 0.5);
 
-            },
-            {
-                threshold: 0.05
+            const rosesTop = rosesSection.offsetTop;
+
+            let collectionsEnd = Infinity;
+
+            if (bridalSection) {
+                collectionsEnd =
+                    bridalSection.offsetTop +
+                    bridalSection.offsetHeight;
             }
+
+            if (
+                scrollPosition >= rosesTop &&
+                scrollPosition <= collectionsEnd
+            ) {
+                whatsappButton.classList.add("is-visible");
+            } else {
+                whatsappButton.classList.remove("is-visible");
+            }
+
+        };
+
+        window.addEventListener(
+            "scroll",
+            checkWhatsAppVisibility,
+            { passive: true }
         );
 
-        whatsappObserver.observe(collectionsSection);
+        checkWhatsAppVisibility();
     }
 
 

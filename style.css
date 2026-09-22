@@ -2700,3 +2700,69 @@ p {
     text-align: left;
   }
 }
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 28px;
+  z-index: 1100;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+
+  background: #25D366;
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(12px) scale(0.92);
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+}
+
+.whatsapp-float.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+@media (max-width: 640px) {
+
+  .whatsapp-float {
+    right: 16px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .whatsapp-float svg {
+    width: 27px;
+    height: 27px;
+  }
+
+}
