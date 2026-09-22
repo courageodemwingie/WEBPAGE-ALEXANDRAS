@@ -33,6 +33,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
+    /* ========================================
+       FLOATING WHATSAPP
+       Show when Collections is reached
+    ======================================== */
+
+    const collectionsSection = document.querySelector("#collections");
+    const whatsappButton = document.querySelector(".whatsapp-float");
+
+    if (collectionsSection && whatsappButton) {
+
+        const whatsappObserver = new IntersectionObserver(
+            ([entry]) => {
+
+                whatsappButton.classList.toggle(
+                    "is-visible",
+                    entry.isIntersecting
+                );
+
+            },
+            {
+                threshold: 0.05
+            }
+        );
+
+        whatsappObserver.observe(collectionsSection);
+    }
+
+
     console.log("Alexandra's Floral website loaded.");
 
 });

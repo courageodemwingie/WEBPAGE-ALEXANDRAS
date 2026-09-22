@@ -641,7 +641,16 @@ p {
   font-size: 11px;
   line-height: 1.6;
 }
+.collection-notice-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
 
+.collection-notice-heading .collection-notice-label {
+  margin: 0;
+}
 /* =========================
    COLLECTION
 ========================= */
