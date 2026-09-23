@@ -31,75 +31,18 @@ function formatDate(date) {
   }).format(new Date(date))
 }
 
-const JOURNAL_CATEGORIES = [
-  {
-    title: 'Floral Musings',
-    value: 'floral-musings',
-    description:
-      'Flower care, floral inspiration, gifting ideas and thoughtful stories about the beauty and everyday life of flowers.',
-  },
-  {
-    title: 'Brides of Alexandra',
-    value: 'brides-of-alexandra',
-    description:
-      'Bridal bouquets, wedding florals, real celebrations and inspiration for brides planning their floral moments.',
-  },
-  {
-    title: 'Beyond the Rose',
-    value: 'beyond-the-rose',
-    description:
-      'Plants, lifestyle, behind-the-scenes stories and the wider world that surrounds Alexandra’s Floral.',
-  },
-]
-
-function getCategory(categoryValue) {
-  return JOURNAL_CATEGORIES.find(
-    (category) => category.value === categoryValue,
-  )
-}
-
-function renderCategoryLabel(categoryValue) {
-  const category = getCategory(categoryValue)
-
-  if (!category) return ''
+function renderTags(tags = []) {
+  if (!tags.length) return ''
 
   return `
-    <a
-      href="/journal/category/${escapeHTML(category.value)}/"
-      class="journal-category-label"
-    >
-      ${escapeHTML(category.title)}
-    </a>
-  `
-}
-
-function renderCategoryNavigation(activeCategory = '') {
-  return `
-    <nav class="journal-category-nav" aria-label="Journal categories">
-
-      <a
-        href="/journal/"
-        class="${activeCategory === '' ? 'is-active' : ''}"
-        ${activeCategory === '' ? 'aria-current="page"' : ''}
-      >
-        All
-      </a>
-
-      ${JOURNAL_CATEGORIES
+    <div class="article-tags">
+      ${tags
         .map(
-          (category) => `
-            <a
-              href="/journal/category/${escapeHTML(category.value)}/"
-              class="${activeCategory === category.value ? 'is-active' : ''}"
-              ${activeCategory === category.value ? 'aria-current="page"' : ''}
-            >
-              ${escapeHTML(category.title)}
-            </a>
-          `,
+          (tag) =>
+            `<span class="article-tag">${escapeHTML(tag)}</span>`,
         )
         .join('')}
-
-    </nav>
+    </div>
   `
 }
 
@@ -412,7 +355,7 @@ function renderArticleCard(article) {
         }
 
         <div class="journal-card-content">
-          ${renderCategoryLabel(article.category)}
+          ${renderTags(article.tags)}
 
           <h2 class="journal-card-title">
             ${escapeHTML(article.title)}
@@ -470,7 +413,7 @@ function renderFeaturedArticle(article) {
 
           <div class="featured-content">
 
-            ${renderCategoryLabel(article.category)}
+            ${renderTags(article.tags)}
 
             <h2>
               ${escapeHTML(article.title)}
@@ -505,6 +448,7 @@ function renderFeaturedArticle(article) {
     </section>
   `
 }
+
 function renderJournalPage(articles) {
   const featured =
     articles.find((article) => article.featured) || articles[0]
@@ -515,7 +459,7 @@ function renderJournalPage(articles) {
 
   return `
     ${renderHead({
-      title: "The Journal",
+      title: "The Alexandra's Floral Journal",
       description:
         "Flower care advice, gifting ideas, floral inspiration, bridal insights and stories from Alexandra's Floral.",
       canonical: `${siteUrl}/journal/`,
@@ -529,6 +473,7 @@ function renderJournalPage(articles) {
 
         <section class="journal-hero">
           <div class="journal-hero-inner">
+            <p class="journal-eyebrow">Alexandra's Floral</p>
 
             <h1>The Journal</h1>
 
@@ -536,13 +481,6 @@ function renderJournalPage(articles) {
               Ideas, inspiration and practical advice for flowers,
               gifting, celebrations and everyday moments.
             </p>
-
-          </div>
-        </section>
-
-        <section class="journal-category-section">
-          <div class="journal-container">
-            ${renderCategoryNavigation()}
           </div>
         </section>
 
@@ -552,9 +490,7 @@ function renderJournalPage(articles) {
             : `
               <section class="journal-empty">
                 <h2>Our Journal is coming soon.</h2>
-                <p>
-                  Beautiful stories and floral inspiration are on the way.
-                </p>
+                <p>Beautiful stories and floral inspiration are on the way.</p>
               </section>
             `
         }
@@ -575,81 +511,6 @@ function renderJournalPage(articles) {
               </section>
             `
             : ''
-        }
-
-      </main>
-
-      ${renderFooter()}
-
-    </body>
-    </html>
-  `
-}
-
-
-function renderCategoryPage(articles, category) {
-  const categoryArticles = articles.filter(
-    (article) => article.category === category.value,
-  )
-
-  const canonical = `${siteUrl}/journal/category/${category.value}/`
-
-  return `
-    ${renderHead({
-      title: `${category.title} | The Journal`,
-      description: category.description,
-      canonical,
-    })}
-
-    <body>
-
-      ${renderHeader()}
-
-      <main class="journal-page">
-
-        <section class="journal-hero journal-category-hero">
-          <div class="journal-hero-inner">
-           
-
-            <h1>${escapeHTML(category.title)}</h1>
-
-            <p>
-              ${escapeHTML(category.description)}
-            </p>
-          </div>
-        </section>
-
-        <section class="journal-category-section">
-          <div class="journal-container">
-            ${renderCategoryNavigation(category.value)}
-          </div>
-        </section>
-
-        ${
-          categoryArticles.length
-            ? `
-              <section class="journal-grid-section">
-                <div class="journal-container">
-
-                  <p class="journal-section-label">
-                    ${escapeHTML(category.title)}
-                  </p>
-
-                  <div class="journal-grid">
-                    ${categoryArticles.map(renderArticleCard).join('')}
-                  </div>
-
-                </div>
-              </section>
-            `
-            : `
-              <section class="journal-empty">
-                <h2>Stories are coming soon.</h2>
-                <p>
-                  We're preparing more from ${escapeHTML(category.title)}.
-                </p>
-              </section>
-            `
         }
 
       </main>
@@ -713,7 +574,7 @@ function renderArticlePage(article) {
 
         <header class="article-header">
 
-          ${renderCategoryLabel(article.category)}
+          ${renderTags(article.tags)}
 
           <h1>${escapeHTML(article.title)}</h1>
 
@@ -777,10 +638,10 @@ const articles = await sanityClient.fetch(`
     coverImage,
     coverImageAlt,
     excerpt,
-    category,
     "authorName": author->name,
     publishedAt,
     featured,
+    tags,
     body,
     seoTitle,
     seoDescription
@@ -831,26 +692,5 @@ for (const article of articles) {
 
   console.log(
     `Generated: journal/${article.slug}/index.html`,
-  )
-}
-/*
- * Generate Journal category pages.
- */
-for (const category of JOURNAL_CATEGORIES) {
-  const categoryDirectory = path.join(
-    journalDirectory,
-    'category',
-    category.value,
-  )
-
-  fs.mkdirSync(categoryDirectory, {recursive: true})
-
-  fs.writeFileSync(
-    path.join(categoryDirectory, 'index.html'),
-    renderCategoryPage(articles, category),
-  )
-
-  console.log(
-    `Generated: journal/category/${category.value}/index.html`,
   )
 }
