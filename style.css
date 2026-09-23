@@ -2760,9 +2760,11 @@ p {
     height: 48px;
   }
 
-  .whatsapp-float svg {
-    width: 27px;
-    height: 27px;
-  }
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: #ffffff;
+}
 
 }
