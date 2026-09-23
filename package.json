@@ -1,0 +1,27 @@
+{
+  "name": "webpage-alexandras",
+  "version": "1.0.0",
+  "description": "Alexandra's Floral website",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+  "dev": "vite",
+  "build": "node scripts/generate-journal.js && vite build",
+  "preview": "vite preview"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/courageodemwingie/WEBPAGE-ALEXANDRAS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@portabletext/to-html": "^6.0.0",
+    "@sanity/client": "^8.6.2",
+    "@sanity/image-url": "^2.1.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}

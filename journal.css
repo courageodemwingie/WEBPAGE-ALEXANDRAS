@@ -1,0 +1,513 @@
+/* ========================================
+   ALEXANDRA'S FLORAL — JOURNAL
+======================================== */
+
+.journal-page,
+.article-page {
+  padding-top: 76px;
+  background: var(--white);
+}
+
+/* ========================================
+   JOURNAL HERO
+======================================== */
+
+.journal-hero {
+  padding: 100px 20px 75px;
+  background: var(--soft-blush);
+  text-align: center;
+}
+
+.journal-hero-inner {
+  width: min(100%, 820px);
+  margin: 0 auto;
+}
+
+.journal-eyebrow {
+  margin-bottom: 16px;
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.journal-hero h1 {
+  margin-bottom: 20px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.journal-hero p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   GLOBAL JOURNAL CONTAINER
+======================================== */
+
+.journal-container {
+  width: min(100% - 40px, var(--container-width));
+  margin-inline: auto;
+}
+
+/* ========================================
+   FEATURED ARTICLE
+======================================== */
+
+.journal-featured {
+  padding: 100px 0 70px;
+}
+
+.journal-section-label {
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.featured-card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 500px;
+  overflow: hidden;
+  background: var(--cream);
+  border: 1px solid var(--border);
+}
+
+.featured-image {
+  display: block;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featured-image:hover img {
+  transform: scale(1.02);
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 55px;
+}
+
+.featured-content h2 {
+  margin-bottom: 18px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(36px, 3.6vw, 54px);
+  font-weight: 500;
+  line-height: 1.07;
+}
+
+.featured-excerpt {
+  max-width: 500px;
+  margin-bottom: 22px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   TAGS
+======================================== */
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.article-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  color: var(--burgundy);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ========================================
+   META / LINKS
+======================================== */
+
+.article-meta,
+.journal-card-meta,
+.article-byline {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.article-link,
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--burgundy);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--burgundy);
+  padding-bottom: 4px;
+  transition: opacity 0.25s ease;
+}
+
+.article-link {
+  margin-top: 28px;
+}
+
+.article-link:hover,
+.article-back:hover {
+  opacity: 0.7;
+}
+
+/* ========================================
+   JOURNAL GRID
+======================================== */
+
+.journal-grid-section {
+  padding: 30px 0 110px;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px 24px;
+}
+
+.journal-card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.journal-card-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.journal-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.journal-card:hover .journal-card-image img {
+  transform: scale(1.03);
+}
+
+.journal-card-content {
+  padding: 22px 4px 0;
+}
+
+.journal-card-title {
+  margin-bottom: 12px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.journal-card-excerpt {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.journal-empty {
+  padding: 110px 20px;
+  text-align: center;
+}
+
+.journal-empty h2 {
+  margin-bottom: 12px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 46px;
+  font-weight: 500;
+}
+
+.journal-empty p {
+  color: var(--muted);
+}
+
+/* ========================================
+   ARTICLE HEADER
+======================================== */
+
+.article-header {
+  width: min(100% - 40px, 900px);
+  margin: 0 auto;
+  padding: 90px 0 50px;
+  text-align: center;
+}
+
+.article-header .article-tags {
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.article-header h1 {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 22px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(40px, 4.2vw, 62px);
+  font-weight: 500;
+  line-height: 1.07;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.article-excerpt {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 20px;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   ARTICLE COVER
+======================================== */
+
+.article-cover {
+  width: min(100% - 40px, 960px);
+  margin: 0 auto 60px;
+}
+
+.article-cover img {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+}
+
+/* ========================================
+   ARTICLE CONTENT
+======================================== */
+
+.article-content {
+  width: min(100% - 40px, 760px);
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.article-content p {
+  margin-bottom: 1.6em;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.article-content h2 {
+  margin: 2.3em 0 0.75em;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.article-content h3 {
+  margin: 2em 0 0.7em;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.6em 1.4em;
+}
+
+.article-content li {
+  margin-bottom: 0.7em;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.article-content strong {
+  color: var(--burgundy);
+}
+
+.article-content blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.8rem;
+  border-left: 2px solid var(--muted-gold);
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--heading-font);
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.article-body-image {
+  margin: 2.5rem 0;
+}
+
+.article-body-image img {
+  width: 100%;
+  height: auto;
+}
+
+.article-body-image figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ========================================
+   ARTICLE END
+======================================== */
+
+.article-end {
+  width: min(100% - 40px, 760px);
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-image {
+    min-height: 420px;
+  }
+
+  .featured-content {
+    padding: 45px 32px;
+  }
+
+  .journal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .journal-page,
+  .article-page {
+    padding-top: 70px;
+  }
+
+  .journal-hero {
+    padding: 75px 20px 55px;
+  }
+
+  .journal-hero h1 {
+    font-size: clamp(44px, 13vw, 62px);
+  }
+
+  .journal-featured {
+    padding: 70px 0 40px;
+  }
+
+  .journal-grid-section {
+    padding: 20px 0 80px;
+  }
+
+  .featured-image {
+    min-height: 320px;
+  }
+
+  .featured-content {
+    padding: 32px 24px;
+  }
+
+  .featured-content h2 {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .journal-card-title {
+    font-size: 28px;
+  }
+
+  .article-header {
+    width: min(100% - 32px, 900px);
+    padding: 60px 0 40px;
+  }
+
+  .article-header h1 {
+    font-size: clamp(36px, 9vw, 48px);
+    line-height: 1.08;
+  }
+
+  .article-excerpt {
+    font-size: 16px;
+  }
+
+  .article-cover {
+    width: min(100% - 32px, 960px);
+    margin-bottom: 50px;
+  }
+
+  .article-cover img {
+    max-height: 360px;
+  }
+
+  .article-content {
+    width: min(100% - 32px, 760px);
+  }
+
+  .article-content p,
+  .article-content li {
+    font-size: 16px;
+  }
+
+  .article-content h2 {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+}
