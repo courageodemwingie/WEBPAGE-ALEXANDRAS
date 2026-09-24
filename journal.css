@@ -368,39 +368,46 @@
 }
 
 
+/* ========================================
+   ARTICLE BODY IMAGES
+======================================== */
+
 .article-body-image {
-  width: min(100%, 760px);
-  max-height: 500px;
+  width: 100%;
+  max-width: 680px;
   margin: 48px auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border: 1px solid var(--border);
-  background: var(--cream);
+  text-align: center;
 }
 
 .article-body-image img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
   height: auto;
-  margin: 0;
+  margin: 0 auto;
 }
 
-/* Caption */
 .article-body-image figcaption {
-  padding: 10px 14px;
-  font-size: 0.8rem;
-  line-height: 1.5;
+  margin-top: 10px;
   color: var(--muted);
-  background: var(--white);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
 }
 
-/* Mobile: don't force a scroll frame */
+/* Mobile */
 @media (max-width: 700px) {
   .article-body-image {
     width: 100%;
-    max-height: none;
-    overflow: visible;
+    max-width: 100%;
     margin: 36px auto;
+  }
+
+  .article-body-image img {
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
   }
 }
 /* ========================================
