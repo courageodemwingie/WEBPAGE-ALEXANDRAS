@@ -349,6 +349,7 @@ function renderHead({
 
         <link rel="stylesheet" href="/style.css" />
         <link rel="stylesheet" href="/journal.css" />
+        <script type="module" src="/analytics.js"></script>
       </head>
   `;
 }
