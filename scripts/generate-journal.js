@@ -1,67 +1,67 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import {toHTML} from '@portabletext/to-html'
-import {createImageUrlBuilder} from '@sanity/image-url'
-import {sanityClient} from './sanity-client.js'
+import fs from "node:fs";
+import path from "node:path";
+import { toHTML } from "@portabletext/to-html";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import { sanityClient } from "./sanity-client.js";
 
-const projectRoot = process.cwd()
-const journalDirectory = path.join(projectRoot, 'journal')
-const siteUrl = 'https://webpage-alexandras.vercel.app'
+const projectRoot = process.cwd();
+const journalDirectory = path.join(projectRoot, "journal");
+const siteUrl = "https://webpage-alexandras.vercel.app";
 
-const imageBuilder = createImageUrlBuilder(sanityClient)
+const imageBuilder = createImageUrlBuilder(sanityClient);
 
 function urlFor(source) {
-  return imageBuilder.image(source)
+  return imageBuilder.image(source);
 }
 
-function escapeHTML(value = '') {
+function escapeHTML(value = "") {
   return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function formatDate(date) {
-  return new Intl.DateTimeFormat('en-NG', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(new Date(date))
+  return new Intl.DateTimeFormat("en-NG", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(date));
 }
 
 const JOURNAL_CATEGORIES = [
   {
-    title: 'Floral Musings',
-    value: 'floral-musings',
+    title: "Floral Musings",
+    value: "floral-musings",
     description:
-      'Flower care, floral inspiration, gifting ideas and thoughtful stories about the beauty and everyday life of flowers.',
+      "Flower care, floral inspiration, gifting ideas and thoughtful stories about the beauty and everyday life of flowers.",
   },
   {
-    title: 'Brides of Alexandra',
-    value: 'brides-of-alexandra',
+    title: "Brides of Alexandra",
+    value: "brides-of-alexandra",
     description:
-      'Bridal bouquets, wedding florals, real celebrations and inspiration for brides planning their floral moments.',
+      "Bridal bouquets, wedding florals, real celebrations and inspiration for brides planning their floral moments.",
   },
   {
-    title: 'Beyond the Rose',
-    value: 'beyond-the-rose',
+    title: "Beyond the Rose",
+    value: "beyond-the-rose",
     description:
-      'Plants, lifestyle, behind-the-scenes stories and the wider world that surrounds Alexandra’s Floral.',
+      "Plants, lifestyle, behind-the-scenes stories and the wider world that surrounds Alexandra’s Floral.",
   },
-]
+];
 
 function getCategory(categoryValue) {
   return JOURNAL_CATEGORIES.find(
     (category) => category.value === categoryValue,
-  )
+  );
 }
 
 function renderCategoryLabel(categoryValue) {
-  const category = getCategory(categoryValue)
+  const category = getCategory(categoryValue);
 
-  if (!category) return ''
+  if (!category) return "";
 
   return `
     <a
@@ -70,37 +70,35 @@ function renderCategoryLabel(categoryValue) {
     >
       ${escapeHTML(category.title)}
     </a>
-  `
+  `;
 }
 
-function renderCategoryNavigation(activeCategory = '') {
+function renderCategoryNavigation(activeCategory = "") {
   return `
     <nav class="journal-category-nav" aria-label="Journal categories">
 
       <a
         href="/journal/"
-        class="${activeCategory === '' ? 'is-active' : ''}"
-        ${activeCategory === '' ? 'aria-current="page"' : ''}
+        class="${activeCategory === "" ? "is-active" : ""}"
+        ${activeCategory === "" ? 'aria-current="page"' : ""}
       >
         All
       </a>
 
-      ${JOURNAL_CATEGORIES
-        .map(
-          (category) => `
+      ${JOURNAL_CATEGORIES.map(
+        (category) => `
             <a
               href="/journal/category/${escapeHTML(category.value)}/"
-              class="${activeCategory === category.value ? 'is-active' : ''}"
-              ${activeCategory === category.value ? 'aria-current="page"' : ''}
+              class="${activeCategory === category.value ? "is-active" : ""}"
+              ${activeCategory === category.value ? 'aria-current="page"' : ""}
             >
               ${escapeHTML(category.title)}
             </a>
           `,
-        )
-        .join('')}
+      ).join("")}
 
     </nav>
-  `
+  `;
 }
 
 function renderHeader() {
@@ -197,7 +195,7 @@ function renderHeader() {
         </nav>
       </div>
     </header>
-  `
+  `;
 }
 
 function renderFooter() {
@@ -285,7 +283,7 @@ function renderFooter() {
 
       </div>
     </footer>
-  `
+  `;
 }
 
 function renderHead({
@@ -293,7 +291,7 @@ function renderHead({
   description,
   canonical,
   image,
-  type = 'website',
+  type = "website",
 }) {
   return `
     <!doctype html>
@@ -318,7 +316,7 @@ function renderHead({
         ${
           image
             ? `<meta property="og:image" content="${escapeHTML(image)}" />`
-            : ''
+            : ""
         }
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -330,7 +328,7 @@ function renderHead({
         ${
           image
             ? `<meta name="twitter:image" content="${escapeHTML(image)}" />`
-            : ''
+            : ""
         }
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -344,28 +342,25 @@ function renderHead({
         <link rel="stylesheet" href="/style.css" />
         <link rel="stylesheet" href="/journal.css" />
       </head>
-  `
+  `;
 }
 
 function renderPortableText(body = []) {
   return toHTML(body, {
     components: {
       types: {
-        image: ({value}) => {
-          if (!value?.asset?._ref) return ''
+        image: ({ value }) => {
+          if (!value?.asset?._ref) return "";
 
-          const imageUrl = urlFor(value)
-            .width(1400)
-            .auto('format')
-            .url()
+          const imageUrl = urlFor(value).width(1400).auto("format").url();
 
           const alt = escapeHTML(
-            value.alt || 'Alexandra’s Floral Journal image',
-          )
+            value.alt || "Alexandra’s Floral Journal image",
+          );
 
           const caption = value.caption
             ? `<figcaption>${escapeHTML(value.caption)}</figcaption>`
-            : ''
+            : "";
 
           return `
             <figure class="article-body-image">
@@ -376,11 +371,11 @@ function renderPortableText(body = []) {
               />
               ${caption}
             </figure>
-          `
+          `;
         },
       },
     },
-  })
+  });
 }
 
 function renderArticleCard(article) {
@@ -388,10 +383,10 @@ function renderArticleCard(article) {
     ? urlFor(article.coverImage)
         .width(900)
         .height(675)
-        .fit('crop')
-        .auto('format')
+        .fit("crop")
+        .auto("format")
         .url()
-    : ''
+    : "";
 
   return `
     <article class="journal-card">
@@ -408,7 +403,7 @@ function renderArticleCard(article) {
                 />
               </div>
             `
-            : ''
+            : ""
         }
 
         <div class="journal-card-content">
@@ -423,7 +418,7 @@ function renderArticleCard(article) {
           </p>
 
           <p class="journal-card-meta">
-            ${escapeHTML(article.authorName || 'Alexandra’s Floral')}
+            ${escapeHTML(article.authorName || "Alexandra’s Floral")}
             ·
             ${escapeHTML(formatDate(article.publishedAt))}
           </p>
@@ -431,7 +426,7 @@ function renderArticleCard(article) {
 
       </a>
     </article>
-  `
+  `;
 }
 
 function renderFeaturedArticle(article) {
@@ -439,10 +434,10 @@ function renderFeaturedArticle(article) {
     ? urlFor(article.coverImage)
         .width(1400)
         .height(900)
-        .fit('crop')
-        .auto('format')
+        .fit("crop")
+        .auto("format")
         .url()
-    : ''
+    : "";
 
   return `
     <section class="journal-featured">
@@ -465,7 +460,7 @@ function renderFeaturedArticle(article) {
                   />
                 </a>
               `
-              : ''
+              : ""
           }
 
           <div class="featured-content">
@@ -482,7 +477,7 @@ function renderFeaturedArticle(article) {
 
             <div class="article-meta">
               <span>
-                ${escapeHTML(article.authorName || 'Alexandra’s Floral')}
+                ${escapeHTML(article.authorName || "Alexandra’s Floral")}
               </span>
               <span>·</span>
               <span>
@@ -503,19 +498,18 @@ function renderFeaturedArticle(article) {
 
       </div>
     </section>
-  `
+  `;
 }
 function renderJournalPage(articles) {
-  const featured =
-    articles.find((article) => article.featured) || articles[0]
+  const featured = articles.find((article) => article.featured) || articles[0];
 
   const remaining = featured
     ? articles.filter((article) => article._id !== featured._id)
-    : []
+    : [];
 
   return `
     ${renderHead({
-      title: "The Journal",
+      title: "Journal",
       description:
         "Flower care advice, gifting ideas, floral inspiration, bridal insights and stories from Alexandra's Floral.",
       canonical: `${siteUrl}/journal/`,
@@ -527,18 +521,11 @@ function renderJournalPage(articles) {
 
       <main class="journal-page">
 
-        <section class="journal-hero">
-          <div class="journal-hero-inner">
-
-            <h1>The Journal</h1>
-
-            <p>
-              Ideas, inspiration and practical advice for flowers,
-              gifting, celebrations and everyday moments.
-            </p>
-
-          </div>
-        </section>
+       <section class="journal-hero">
+  <div class="journal-hero-inner">
+    <h1>Journal</h1>
+  </div>
+</section>
 
         <section class="journal-category-section">
           <div class="journal-container">
@@ -568,13 +555,13 @@ function renderJournalPage(articles) {
                   <p class="journal-section-label">Latest Stories</p>
 
                   <div class="journal-grid">
-                    ${remaining.map(renderArticleCard).join('')}
+                    ${remaining.map(renderArticleCard).join("")}
                   </div>
 
                 </div>
               </section>
             `
-            : ''
+            : ""
         }
 
       </main>
@@ -583,20 +570,35 @@ function renderJournalPage(articles) {
 
     </body>
     </html>
+  `;
+}
+function renderCategoryTitle(categoryValue) {
+  const titleLines = {
+    'floral-musings': ['Floral', 'Musings'],
+    'brides-of-alexandra': ['Brides', 'of', 'Alexandra'],
+    'beyond-the-rose': ['Beyond', 'the', 'Rose'],
+  }
+
+  const lines = titleLines[categoryValue] || []
+
+  return `
+    <h1 class="journal-category-title">
+      ${lines
+        .map((line) => `<span>${escapeHTML(line)}</span>`)
+        .join('')}
+    </h1>
   `
 }
-
-
 function renderCategoryPage(articles, category) {
   const categoryArticles = articles.filter(
     (article) => article.category === category.value,
-  )
+  );
 
-  const canonical = `${siteUrl}/journal/category/${category.value}/`
+  const canonical = `${siteUrl}/journal/category/${category.value}/`;
 
   return `
     ${renderHead({
-      title: `${category.title} | The Journal`,
+      title: `${category.title} | Journal`,
       description: category.description,
       canonical,
     })}
@@ -608,16 +610,10 @@ function renderCategoryPage(articles, category) {
       <main class="journal-page">
 
         <section class="journal-hero journal-category-hero">
-          <div class="journal-hero-inner">
-           
-
-            <h1>${escapeHTML(category.title)}</h1>
-
-            <p>
-              ${escapeHTML(category.description)}
-            </p>
-          </div>
-        </section>
+  <div class="journal-hero-inner">
+    ${renderCategoryTitle(category.value)}
+  </div>
+</section>
 
         <section class="journal-category-section">
           <div class="journal-container">
@@ -636,7 +632,7 @@ function renderCategoryPage(articles, category) {
                   </p>
 
                   <div class="journal-grid">
-                    ${categoryArticles.map(renderArticleCard).join('')}
+                    ${categoryArticles.map(renderArticleCard).join("")}
                   </div>
 
                 </div>
@@ -658,43 +654,40 @@ function renderCategoryPage(articles, category) {
 
     </body>
     </html>
-  `
+  `;
 }
 
 function renderArticlePage(article) {
-  const canonical = `${siteUrl}/journal/${article.slug}/`
+  const canonical = `${siteUrl}/journal/${article.slug}/`;
 
   const coverUrl = article.coverImage
-    ? urlFor(article.coverImage)
-        .width(1600)
-        .auto('format')
-        .url()
-    : ''
+    ? urlFor(article.coverImage).width(1600).auto("format").url()
+    : "";
 
-  const title = article.seoTitle || article.title
-  const description = article.seoDescription || article.excerpt
+  const title = article.seoTitle || article.title;
+  const description = article.seoDescription || article.excerpt;
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: article.title,
     description,
     datePublished: article.publishedAt,
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: article.authorName || "Alexandra's Floral",
     },
     image: coverUrl ? [coverUrl] : undefined,
     mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': canonical,
+      "@type": "WebPage",
+      "@id": canonical,
     },
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: "Alexandra's Floral",
       url: siteUrl,
     },
-  }
+  };
 
   return `
     ${renderHead({
@@ -702,7 +695,7 @@ function renderArticlePage(article) {
       description,
       canonical,
       image: coverUrl,
-      type: 'article',
+      type: "article",
     })}
 
     <body>
@@ -739,7 +732,7 @@ function renderArticlePage(article) {
                 />
               </figure>
             `
-            : ''
+            : ""
         }
 
         <article class="article-content">
@@ -762,7 +755,7 @@ function renderArticlePage(article) {
 
     </body>
     </html>
-  `
+  `;
 }
 
 const articles = await sanityClient.fetch(`
@@ -785,53 +778,43 @@ const articles = await sanityClient.fetch(`
     seoTitle,
     seoDescription
   }
-`)
+`);
 
-console.log(`Found ${articles.length} published Journal article(s).`)
+console.log(`Found ${articles.length} published Journal article(s).`);
 
-/*
- * Remove previously generated Journal pages.
- * This prevents deleted/unpublished articles from remaining
- * on the website during future builds.
- */
 if (fs.existsSync(journalDirectory)) {
   fs.rmSync(journalDirectory, {
     recursive: true,
     force: true,
-  })
+  });
 }
 
-fs.mkdirSync(journalDirectory, {recursive: true})
+fs.mkdirSync(journalDirectory, { recursive: true });
 
 /*
  * Generate Journal landing page.
  */
 fs.writeFileSync(
-  path.join(journalDirectory, 'index.html'),
+  path.join(journalDirectory, "index.html"),
   renderJournalPage(articles),
-)
+);
 
-console.log('Generated: journal/index.html')
+console.log("Generated: journal/index.html");
 
 /*
  * Generate individual article pages.
  */
 for (const article of articles) {
-  const articleDirectory = path.join(
-    journalDirectory,
-    article.slug,
-  )
+  const articleDirectory = path.join(journalDirectory, article.slug);
 
-  fs.mkdirSync(articleDirectory, {recursive: true})
+  fs.mkdirSync(articleDirectory, { recursive: true });
 
   fs.writeFileSync(
-    path.join(articleDirectory, 'index.html'),
+    path.join(articleDirectory, "index.html"),
     renderArticlePage(article),
-  )
+  );
 
-  console.log(
-    `Generated: journal/${article.slug}/index.html`,
-  )
+  console.log(`Generated: journal/${article.slug}/index.html`);
 }
 /*
  * Generate Journal category pages.
@@ -839,18 +822,16 @@ for (const article of articles) {
 for (const category of JOURNAL_CATEGORIES) {
   const categoryDirectory = path.join(
     journalDirectory,
-    'category',
+    "category",
     category.value,
-  )
+  );
 
-  fs.mkdirSync(categoryDirectory, {recursive: true})
+  fs.mkdirSync(categoryDirectory, { recursive: true });
 
   fs.writeFileSync(
-    path.join(categoryDirectory, 'index.html'),
+    path.join(categoryDirectory, "index.html"),
     renderCategoryPage(articles, category),
-  )
+  );
 
-  console.log(
-    `Generated: journal/category/${category.value}/index.html`,
-  )
+  console.log(`Generated: journal/category/${category.value}/index.html`);
 }

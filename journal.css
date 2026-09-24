@@ -13,7 +13,7 @@
 ======================================== */
 
 .journal-hero {
-  padding: 100px 20px 75px;
+  padding: 58px 24px 54px;
   background: var(--soft-blush);
   text-align: center;
 }
@@ -23,32 +23,44 @@
   margin: 0 auto;
 }
 
-.journal-eyebrow {
-  margin-bottom: 16px;
-  color: var(--burgundy);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
 .journal-hero h1 {
-  margin-bottom: 20px;
+  margin: 0;
   color: var(--burgundy);
   font-family: var(--heading-font);
-  font-size: clamp(48px, 6vw, 82px);
+  font-size: clamp(52px, 7vw, 82px);
   font-weight: 500;
+  line-height: 0.95;
+}
+
+/* Category titles */
+
+/* ========================================
+   JOURNAL CATEGORY TITLES
+======================================== */
+
+.journal-category-title {
+  margin: 0;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(54px, 7vw, 84px);
+  font-weight: 500;
+  line-height: 0.84;
+}
+
+.journal-category-title span {
+  display: block;
+}
+
+/* Editorial connector: "the" / "of" only */
+.journal-category-title span:nth-child(2):not(:last-child) {
+  font-size: 0.30em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--muted-gold);
   line-height: 1;
+  margin: 0.16em 0;
 }
-
-.journal-hero p {
-  max-width: 680px;
-  margin: 0 auto;
-  color: var(--text);
-  font-size: 17px;
-  line-height: 1.8;
-}
-
 /* ========================================
    GLOBAL JOURNAL CONTAINER
 ======================================== */
@@ -125,29 +137,7 @@
   line-height: 1.8;
 }
 
-/* ========================================
-   TAGS
-======================================== */
 
-.article-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.article-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 12px;
-  color: var(--burgundy);
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1;
-}
 
 /* ========================================
    META / LINKS
@@ -377,23 +367,42 @@
   line-height: 1.5;
 }
 
+
 .article-body-image {
-  margin: 2.5rem 0;
+  width: min(100%, 760px);
+  max-height: 500px;
+  margin: 48px auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--border);
+  background: var(--cream);
 }
 
 .article-body-image img {
+  display: block;
   width: 100%;
   height: auto;
+  margin: 0;
 }
 
+/* Caption */
 .article-body-image figcaption {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 12px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
   line-height: 1.5;
-  text-align: center;
+  color: var(--muted);
+  background: var(--white);
 }
 
+/* Mobile: don't force a scroll frame */
+@media (max-width: 700px) {
+  .article-body-image {
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    margin: 36px auto;
+  }
+}
 /* ========================================
    ARTICLE END
 ======================================== */
@@ -439,12 +448,21 @@
   }
 
   .journal-hero {
-    padding: 75px 20px 55px;
-  }
+  padding: 46px 20px 44px;
+}
 
-  .journal-hero h1 {
-    font-size: clamp(44px, 13vw, 62px);
-  }
+.journal-hero h1 {
+  font-size: clamp(48px, 13vw, 62px);
+}
+.journal-category-hero {
+  padding-top: 44px;
+  padding-bottom: 40px;
+}
+
+.journal-category-title {
+  font-size: clamp(52px, 14vw, 64px);
+  line-height: 0.84;
+}
 
   .journal-featured {
     padding: 70px 0 40px;
@@ -635,45 +653,6 @@
     margin-bottom: 10px;
   }
 }
-/* ========================================
-   SIMPLIFIED JOURNAL HERO
-======================================== */
-
-.journal-hero {
-  min-height: auto;
-  padding: 72px 24px 68px;
-}
-
-.journal-hero-inner {
-  max-width: 820px;
-}
-
-.journal-hero h1 {
-  margin-bottom: 18px;
-}
-
-.journal-hero-inner > p:last-child {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.journal-category-hero {
-  padding-top: 68px;
-  padding-bottom: 58px;
-}
-
-.journal-category-hero h1 {
-  margin-bottom: 16px;
-}
-
-@media (max-width: 700px) {
-  .journal-hero {
-    padding: 52px 20px 48px;
-  }
-
-  .journal-category-hero {
-    padding-top: 48px;
-    padding-bottom: 42px;
-  }
+.journal-category-title span {
+  display: block;
 }
