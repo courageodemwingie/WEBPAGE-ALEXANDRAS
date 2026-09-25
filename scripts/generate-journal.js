@@ -397,43 +397,47 @@ function renderArticleCard(article) {
         .url()
     : "";
 
+  const articleUrl = `/journal/${escapeHTML(article.slug)}/`;
+
   return `
     <article class="journal-card">
-      <a href="/journal/${escapeHTML(article.slug)}/">
 
-        ${
-          imageUrl
-            ? `
-              <div class="journal-card-image">
-                <img
-                  src="${escapeHTML(imageUrl)}"
-                  alt="${escapeHTML(article.coverImageAlt || article.title)}"
-                  loading="lazy"
-                />
-              </div>
-            `
-            : ""
-        }
+      ${
+        imageUrl
+          ? `
+            <div class="journal-card-image">
+              <img
+                src="${escapeHTML(imageUrl)}"
+                alt="${escapeHTML(article.coverImageAlt || article.title)}"
+                loading="lazy"
+              />
+            </div>
+          `
+          : ""
+      }
 
-        <div class="journal-card-content">
-          ${renderCategoryLabel(article.category)}
+      <div class="journal-card-content">
 
-          <h2 class="journal-card-title">
+        ${renderCategoryLabel(article.category)}
+
+        <h2 class="journal-card-title">
+          <a href="${articleUrl}">
             ${escapeHTML(article.title)}
-          </h2>
+          </a>
+        </h2>
 
-          <p class="journal-card-excerpt">
-            ${escapeHTML(article.excerpt)}
-          </p>
+        <p class="journal-card-excerpt">
+          ${escapeHTML(article.excerpt)}
+        </p>
 
-          <p class="journal-card-meta">
-            ${escapeHTML(article.authorName || "Alexandra’s Floral")}
-            ·
-            ${escapeHTML(formatDate(article.publishedAt))}
-          </p>
-        </div>
+        <p class="journal-card-meta">
+          ${escapeHTML(article.authorName || "Alexandra's Floral")}
+          ·
+          ${escapeHTML(formatDate(article.publishedAt))}
+        </p>
 
-      </a>
+      </div>
+
     </article>
   `;
 }
@@ -448,6 +452,8 @@ function renderFeaturedArticle(article) {
         .url()
     : "";
 
+  const articleUrl = `/journal/${escapeHTML(article.slug)}/`;
+
   return `
     <section class="journal-featured">
       <div class="journal-container">
@@ -459,15 +465,12 @@ function renderFeaturedArticle(article) {
           ${
             imageUrl
               ? `
-                <a
-                  href="/journal/${escapeHTML(article.slug)}/"
-                  class="featured-image"
-                >
+                <div class="featured-image">
                   <img
                     src="${escapeHTML(imageUrl)}"
                     alt="${escapeHTML(article.coverImageAlt || article.title)}"
                   />
-                </a>
+                </div>
               `
               : ""
           }
@@ -477,7 +480,9 @@ function renderFeaturedArticle(article) {
             ${renderCategoryLabel(article.category)}
 
             <h2>
-              ${escapeHTML(article.title)}
+              <a href="${articleUrl}">
+                ${escapeHTML(article.title)}
+              </a>
             </h2>
 
             <p class="featured-excerpt">
@@ -495,7 +500,7 @@ function renderFeaturedArticle(article) {
             </div>
 
             <a
-              href="/journal/${escapeHTML(article.slug)}/"
+              href="${articleUrl}"
               class="article-link"
             >
               Read Article →
