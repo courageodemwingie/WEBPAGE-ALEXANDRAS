@@ -1,11 +1,6 @@
-/* ========================================
-   ALEXANDRA'S FLORAL
-   MAIN STYLESHEET
-======================================== */
+/* ALEXANDRA'S FLORAL MAIN STYLESHEET*/
 
-/* ========================================
-   DESIGN TOKENS
-======================================== */
+/* DESIGN TOKENS */
 
 :root {
   /* Brand Colours */
@@ -30,9 +25,7 @@
   --container-width: 1200px;
 }
 
-/* ========================================
-   RESET
-======================================== */
+/*  RESET */
 
 * {
   margin: 0;
@@ -67,9 +60,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ========================================
-   GLOBAL
-======================================== */
+/* GLOBAL */
 
 .container {
   width: min(100% - 40px, var(--container-width));
@@ -114,9 +105,7 @@ p {
   font-size: 16px;
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 
 .site-header {
   position: fixed;
@@ -143,9 +132,7 @@ p {
   align-items: center;
 }
 
-/* =========================================
-   LOGO
-========================================= */
+/* LOGO */
 
 .header-logo {
   display: inline-flex;
@@ -164,9 +151,7 @@ p {
   object-fit: contain;
 }
 
-/* =========================================
-   BRAND NAME
-========================================= */
+/* BRAND NAME */
 
 .brand-name {
   justify-self: center;
@@ -182,9 +167,7 @@ p {
   white-space: nowrap;
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/*  NAVIGATION */
 
 .main-nav {
   justify-self: end;
@@ -237,9 +220,7 @@ p {
   transform: translateY(-1px);
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* TABLET */
 
 @media (max-width: 900px) {
   .header-inner {
@@ -277,9 +258,7 @@ p {
   }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 640px) {
   .header-inner {
@@ -319,9 +298,7 @@ p {
   }
 }
 
-/* ========================================
-   BUTTONS
-======================================== */
+/* BUTTONS */
 
 .button {
   display: inline-flex;
@@ -369,9 +346,7 @@ p {
     font-size: 10px;
   }
 }
-/* ========================================
-   HERO
-======================================== */
+/* HERO */
 
 .hero {
   position: relative;
@@ -457,9 +432,7 @@ p {
   margin-top: 35px;
 }
 
-/* ========================================
-   HERO PAGINATION
-======================================== */
+/* HERO PAGINATION */
 
 .hero-slider .swiper-pagination {
   z-index: 5;
@@ -503,9 +476,7 @@ p {
     font-size: 10px;
   }
 }
-/* ========================================
-   SECTION HEADING
-======================================== */
+/*  SECTION HEADING */
 
 .section-heading {
   max-width: 650px;
@@ -541,13 +512,7 @@ p {
   line-height: 1.8;
 }
 
-/* =========================
-   COLLECTIONS
-========================= */
-
-/* =========================
-   COLLECTIONS
-========================= */
+/* COLLECTIONS */
 
 .collections {
   width: 100%;
@@ -569,9 +534,7 @@ p {
   }
 }
 
-/* =========================
-   COLLECTION NOTICE
-========================= */
+/*  COLLECTION NOTICE */
 
 .collection-notice {
   display: flex;
@@ -651,9 +614,7 @@ p {
 .collection-notice-heading .collection-notice-label {
   margin: 0;
 }
-/* =========================
-   COLLECTION
-========================= */
+
 
 .lookbook-collection {
   width: 100%;
@@ -690,9 +651,7 @@ p {
   font-weight: 600;
 }
 
-/* =========================
-   PRODUCT GRID
-========================= */
+/* PRODUCT GRID */
 
 .lookbook-grid {
   display: grid;
@@ -707,9 +666,7 @@ p {
   box-sizing: border-box;
 }
 
-/* =========================
-   PRODUCT CARD
-========================= */
+/*  PRODUCT CARD */
 
 .bouquet-card {
   width: 100%;
@@ -747,9 +704,7 @@ p {
   transform: scale(1.03);
 }
 
-/* =========================
-   PRODUCT INFO CONTAINER
-========================= */
+/* PRODUCT INFO CONTAINER */
 
 .bouquet-info {
   display: flex;
@@ -805,9 +760,7 @@ p {
   border-color: var(--soft-blush);
 }
 
-/* =========================
-   GIFT ITEMS
-========================= */
+/* GIFT ITEMS */
 
 .gift-items-collection {
   width: 100%;
@@ -877,9 +830,7 @@ p {
   line-height: 1.4;
 }
 
-/* =========================
-   PLANTS
-========================= */
+/* PLANTS */
 
 .plant-collection {
   width: 100%;
@@ -961,9 +912,7 @@ p {
   background: var(--soft-blush);
 }
 
-/* =========================
-   BRIDAL
-========================= */
+/* BRIDAL */
 
 .bridal-lookbook {
   width: 100%;
@@ -1005,9 +954,7 @@ p {
   line-height: 1.8;
 }
 
-/* =========================
-   BRIDAL BUTTON
-========================= */
+/* BRIDAL BUTTON */
 
 .bridal-consultation {
   display: inline-flex;
@@ -1040,9 +987,7 @@ p {
   transform: translateY(-2px);
 }
 
-/* =========================
-   BRIDAL IMAGE GRID
-========================= */
+/* BRIDAL IMAGE GRID */
 
 .bridal-gallery {
   display: grid;
@@ -1083,9 +1028,7 @@ p {
   transform: scale(1.035);
 }
 
-/* =========================
-   TABLET
-========================= */
+/* TABLET */
 
 @media (max-width: 900px) {
   .collections {
@@ -1128,9 +1071,7 @@ p {
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 640px) {
   .collections {
@@ -1359,18 +1300,14 @@ p {
   }
 }
 
-/* =========================================
-   LOCATIONS
-========================================= */
+/* LOCATIONS */
 
 .locations-section {
   padding: 120px 0;
   background: var(--cream);
 }
 
-/* =========================================
-   SECTION INTRO
-========================================= */
+/* SECTION INTRO */
 
 .locations-section .section-heading {
   max-width: 700px;
@@ -1437,9 +1374,9 @@ p {
   border: 1px solid var(--border);
 }
 
-/* =========================================
+/* 
    CITY IMAGE
-========================================= */
+ */
 
 .city-image {
   width: 100%;
@@ -1465,10 +1402,8 @@ p {
   transform: scale(1.04);
 }
 
-/* =========================================
-   CITY CONTENT
-========================================= */
-
+/* CITY CONTENT */
+ 
 .city-content {
   position: relative;
 
@@ -1501,9 +1436,7 @@ p {
   line-height: 1.6;
 }
 
-/* =========================================
-   CITY ARROW
-========================================= */
+/* CITY ARROW */
 
 .city-arrow {
   display: flex;
@@ -1536,9 +1469,7 @@ p {
   background: var(--dusty-rose);
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* TABLET */
 
 @media (max-width: 900px) {
   .locations-section {
@@ -1563,9 +1494,7 @@ p {
   }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 640px) {
   .locations-section {
@@ -1647,18 +1576,18 @@ p {
   }
 }
 
-/* =========================================
+/* 
    ABOUT
-========================================= */
+ */
 
 .about-section {
   padding: 140px 0;
   background: var(--soft-blush);
 }
 
-/* =========================================
+/* 
    ABOUT GRID
-========================================= */
+ */
 
 .about-grid {
   display: grid;
@@ -1672,9 +1601,9 @@ p {
   align-items: center;
 }
 
-/* =========================================
+/* 
    FOUNDER
-========================================= */
+ */
 
 .about-founder {
   width: 100%;
@@ -1700,9 +1629,9 @@ p {
   object-fit: cover;
 }
 
-/* =========================================
+/* 
    FOUNDER CAPTION
-========================================= */
+ */
 
 .founder-caption {
   padding-top: 18px;
@@ -1733,9 +1662,9 @@ p {
   text-transform: uppercase;
 }
 
-/* =========================================
+/* 
    ABOUT CONTENT
-========================================= */
+ */
 
 .about-content {
   width: 100%;
@@ -1798,9 +1727,9 @@ p {
   line-height: 1.9;
 }
 
-/* =========================================
+/* 
    BRAND PRINCIPLE
-========================================= */
+ */
 
 .about-principle {
   display: flex;
@@ -1831,9 +1760,9 @@ p {
   line-height: 1.45;
 }
 
-/* =========================================
+/* 
    TABLET
-========================================= */
+*/
 
 @media (max-width: 900px) {
   .about-section {
@@ -1861,9 +1790,9 @@ p {
   }
 }
 
-/* =========================================
+/* 
    MOBILE
-========================================= */
+ */
 
 @media (max-width: 640px) {
   .about-section {
@@ -1947,18 +1876,18 @@ p {
     line-height: 1.5;
   }
 }
-/* =========================================
+/* 
    CONTACT DETAILS
-========================================= */
+*/
 
 .contact-details {
   width: 100%;
   max-width: 500px;
 }
 
-/* -----------------------------------------
+/* 
    CONTACT GROUP
------------------------------------------ */
+ */
 
 .contact-group {
   padding: 0 0 30px;
@@ -1973,9 +1902,9 @@ p {
   border-bottom: none;
 }
 
-/* -----------------------------------------
+/* 
    LABEL
------------------------------------------ */
+ */
 
 .contact-label {
   margin: 0 0 16px;
@@ -1992,9 +1921,9 @@ p {
   text-transform: uppercase;
 }
 
-/* =========================================
+/* 
    PHONE CONTACTS
-========================================= */
+ */
 
 .phone-list {
   display: flex;
@@ -2070,9 +1999,9 @@ p {
   color: var(--cream);
 }
 
-/* =========================================
+/* 
    SOCIAL MEDIA
-========================================= */
+ */
 
 .social-links {
   display: flex;
@@ -2156,9 +2085,9 @@ p {
   transform: translateY(-2px);
 }
 
-/* =========================================
+/* 
    TABLET
-========================================= */
+ */
 
 @media (max-width: 900px) {
   .contact-details {
@@ -2175,9 +2104,9 @@ p {
   }
 }
 
-/* =========================================
+/* 
    MOBILE
-========================================= */
+ */
 
 @media (max-width: 640px) {
   .contact-details {
@@ -2233,9 +2162,9 @@ p {
   }
 }
 
-/* =========================================
+/* 
    FOOTER
-========================================= */
+ */
 
 .site-footer {
   width: 100%;
@@ -2248,9 +2177,9 @@ p {
   margin: 0 auto;
 }
 
-/* =========================================
+/* 
    FOOTER TOP
-========================================= */
+ */
 
 .footer-top {
   display: grid;
@@ -2264,9 +2193,9 @@ p {
   border-bottom: 1px solid rgba(228, 206, 197, 0.18);
 }
 
-/* =========================================
+/* 
    FOOTER BRAND
-========================================= */
+ */
 
 .footer-brand {
   display: flex;
@@ -2300,9 +2229,9 @@ p {
   text-transform: lowercase;
 }
 
-/* =========================================
+/* 
    FOOTER NAVIGATION
-========================================= */
+*/
 
 .footer-nav {
   display: flex;
@@ -2332,9 +2261,9 @@ p {
   transform: translateX(3px);
 }
 
-/* =========================================
+/* 
    FOOTER SOCIALS
-========================================= */
+ */
 
 .footer-socials {
   display: flex;
@@ -2401,9 +2330,9 @@ p {
   stroke: none;
 }
 
-/* =========================================
+/*
    ORDER BUTTON
-========================================= */
+ */
 
 .footer-order {
   display: inline-flex;
@@ -2436,9 +2365,9 @@ p {
   transform: translateY(-1px);
 }
 
-/* =========================================
+/* 
    FOOTER BOTTOM
-========================================= */
+ */
 
 .footer-bottom {
   display: flex;
@@ -2461,9 +2390,9 @@ p {
   text-align: center;
 }
 
-/* =========================================
+/* 
    TABLET
-========================================= */
+ */
 
 @media (max-width: 1000px) {
   .footer-top {
@@ -2485,9 +2414,9 @@ p {
   }
 }
 
-/* =========================================
+/* 
    MOBILE
-========================================= */
+ */
 
 @media (max-width: 640px) {
   .footer-container {
@@ -2558,9 +2487,9 @@ p {
   }
 }
 
-/* ========================================
+/* 
    TABLET
-======================================== */
+ */
 
 @media (max-width: 850px) {
   .main-nav {
@@ -2700,9 +2629,9 @@ p {
     text-align: left;
   }
 }
-/* =========================
+/* 
    FLOATING WHATSAPP
-========================= */
+ */
 
 .whatsapp-float {
   position: fixed;
@@ -2768,9 +2697,9 @@ p {
 }
 
 }
-/* ========================================
+/* 
    PAGE HEIGHT / STICKY FOOTER
-======================================== */
+ */
 
 html,
 body {
@@ -2790,9 +2719,9 @@ body > main {
 .site-footer {
   flex-shrink: 0;
 }
-/* =========================================
+/* 
    PAGE HEIGHT / STICKY FOOTER
-========================================= */
+*/
 
 html,
 body {
