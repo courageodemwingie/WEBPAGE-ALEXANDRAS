@@ -1,13 +1,8 @@
-/* ========================================
-   ALEXANDRA'S FLORAL
-   JAVASCRIPT
-======================================== */
+/* ALEXANDRA'S FLORAL JAVASCRIPT */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ========================================
-       HERO SLIDER
-    ======================================== */
+    /* HERO SLIDER */
 
     const heroSlider = new Swiper(".hero-slider", {
 
@@ -38,10 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ========================================
-       FLOATING WHATSAPP
-       Show from Roses through Collections
-    ======================================== */
+    /* FLOATING WHATSAPP LOGIC */
 
     const rosesSection = document.querySelector("#bouquet-arrangements");
     const bridalSection = document.querySelector("#bridal-lookbook");

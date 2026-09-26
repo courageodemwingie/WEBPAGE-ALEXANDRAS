@@ -61,18 +61,14 @@
   line-height: 1;
   margin: 0.16em 0;
 }
-/* ========================================
-   GLOBAL JOURNAL CONTAINER
-======================================== */
+/*  GLOBAL JOURNAL CONTAINER */
 
 .journal-container {
   width: min(100% - 40px, var(--container-width));
   margin-inline: auto;
 }
 
-/* ========================================
-   FEATURED ARTICLE
-======================================== */
+/* FEATURED ARTICLE */
 
 .journal-featured {
   padding: 100px 0 70px;
@@ -139,9 +135,7 @@
 
 
 
-/* ========================================
-   META / LINKS
-======================================== */
+/*  META / LINKS */
 
 .article-meta,
 .journal-card-meta,
@@ -173,9 +167,7 @@
   opacity: 0.7;
 }
 
-/* ========================================
-   JOURNAL GRID
-======================================== */
+/* JOURNAL GRID */
 
 .journal-grid-section {
   padding: 30px 0 110px;
@@ -236,9 +228,7 @@
   line-height: 1.75;
 }
 
-/* ========================================
-   EMPTY STATE
-======================================== */
+/* EMPTY STATE */
 
 .journal-empty {
   padding: 110px 20px;
@@ -257,9 +247,7 @@
   color: var(--muted);
 }
 
-/* ========================================
-   ARTICLE HEADER
-======================================== */
+/* ARTICLE HEADER */
 
 .article-header {
   width: min(100% - 40px, 900px);
@@ -295,9 +283,7 @@
   line-height: 1.8;
 }
 
-/* ========================================
-   ARTICLE COVER
-======================================== */
+/* ARTICLE COVER */
 
 .article-cover {
   width: min(100% - 40px, 960px);
@@ -311,9 +297,7 @@
   object-fit: cover;
 }
 
-/* ========================================
-   ARTICLE CONTENT
-======================================== */
+/* ARTICLE CONTENT*/
 
 .article-content {
   width: min(100% - 40px, 760px);
@@ -374,9 +358,7 @@
 }
 
 
-/* ========================================
-   ARTICLE BODY IMAGES
-======================================== */
+/* ARTICLE BODY IMAGES */
 
 .article-body-image {
   width: 100%;
@@ -416,9 +398,7 @@
     max-height: none;
   }
 }
-/* ========================================
-   ARTICLE END
-======================================== */
+/* ARTICLE END */
 
 .article-end {
   width: min(100% - 40px, 760px);
@@ -426,9 +406,7 @@
   padding-bottom: 100px;
 }
 
-/* ========================================
-   TABLET
-======================================== */
+/* TABLET */
 
 @media (max-width: 900px) {
 
@@ -449,9 +427,7 @@
   }
 }
 
-/* ========================================
-   MOBILE
-======================================== */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -542,9 +518,7 @@
     font-size: clamp(30px, 8vw, 40px);
   }
 }
-/* ========================================
-   JOURNAL CATEGORIES
-======================================== */
+/* JOURNAL CATEGORIES */
 
 .journal-category-section {
   padding: 8px 0 10px;
