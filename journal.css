@@ -1144,3 +1144,18 @@
     font-size: 14px;
   }
 }
+/* Tighten spacing around article headings */
+
+.article-content h2 {
+  margin-top: 10px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Remove empty Portable Text paragraphs creating large gaps */
+.article-content p:empty {
+  display: none;
+}
+
+.article-content p:has(> br:only-child) {
+  display: none;
+}
