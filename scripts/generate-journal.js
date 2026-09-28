@@ -30,6 +30,24 @@ function formatDate(date) {
     year: "numeric",
   }).format(new Date(date));
 }
+function getReadingTime(body) {
+  if (!Array.isArray(body)) return 1;
+
+  const text = body
+    .map((block) => {
+      if (block?._type === "block" && Array.isArray(block.children)) {
+        return block.children.map((child) => child.text || "").join(" ");
+      }
+
+      return "";
+    })
+    .join(" ")
+    .trim();
+
+  const words = text ? text.split(/\s+/).length : 0;
+
+  return Math.max(1, Math.ceil(words / 200));
+}
 
 const JOURNAL_CATEGORIES = [
   {
@@ -391,7 +409,7 @@ function renderArticleCard(article) {
   const imageUrl = article.coverImage
     ? urlFor(article.coverImage)
         .width(900)
-        .height(675)
+        .height(1125)
         .fit("crop")
         .auto("format")
         .url()
@@ -405,7 +423,63 @@ function renderArticleCard(article) {
       ${
         imageUrl
           ? `
-            <div class="journal-card-image">
+            <div class="journal-card-media">
+              <img
+                src="${escapeHTML(imageUrl)}"
+                alt="${escapeHTML(article.coverImageAlt || article.title)}"
+                loading="lazy"
+              />
+
+              <div class="journal-card-overlay">
+
+                <p class="journal-card-meta">
+  <span>${escapeHTML(article.authorName || "Alexandra's Floral")}</span>
+  <span>·</span>
+  <span>${escapeHTML(formatDate(article.publishedAt))}</span>
+  <span>·</span>
+  <span>${getReadingTime(article.body)} min read</span>
+</p>
+                <div class="journal-card-bottom">
+
+                  ${renderCategoryLabel(article.category)}
+
+                  <h2 class="journal-card-title">
+                    <a href="${articleUrl}">
+                      ${escapeHTML(article.title)}
+                    </a>
+                  </h2>
+
+                </div>
+
+              </div>
+            </div>
+          `
+          : ""
+      }
+
+    </article>
+  `;
+}
+
+function renderArticleListItem(article) {
+  const imageUrl = article.coverImage
+    ? urlFor(article.coverImage)
+        .width(800)
+        .height(600)
+        .fit("crop")
+        .auto("format")
+        .url()
+    : "";
+
+  const articleUrl = `/journal/${escapeHTML(article.slug)}/`;
+
+  return `
+    <article class="journal-list-item">
+
+      ${
+        imageUrl
+          ? `
+            <div class="journal-list-media">
               <img
                 src="${escapeHTML(imageUrl)}"
                 alt="${escapeHTML(article.coverImageAlt || article.title)}"
@@ -416,110 +490,46 @@ function renderArticleCard(article) {
           : ""
       }
 
-      <div class="journal-card-content">
+      <div class="journal-list-content">
+
+        <p class="journal-list-meta">
+  <span>${escapeHTML(
+    article.authorName || "Alexandra's Floral"
+  )}</span>
+  <span>·</span>
+  <span>${escapeHTML(
+    formatDate(article.publishedAt)
+  )}</span>
+  <span>·</span>
+  <span>${getReadingTime(article.body)} min read</span>
+</p>
 
         ${renderCategoryLabel(article.category)}
 
-        <h2 class="journal-card-title">
+        <h2 class="journal-list-title">
           <a href="${articleUrl}">
             ${escapeHTML(article.title)}
           </a>
         </h2>
 
-        <p class="journal-card-excerpt">
-          ${escapeHTML(article.excerpt)}
-        </p>
-
-        <p class="journal-card-meta">
-          ${escapeHTML(article.authorName || "Alexandra's Floral")}
-          ·
-          ${escapeHTML(formatDate(article.publishedAt))}
-        </p>
+        ${
+          article.excerpt
+            ? `
+              <p class="journal-list-excerpt">
+                ${escapeHTML(article.excerpt)}
+              </p>
+            `
+            : ""
+        }
 
       </div>
 
     </article>
   `;
 }
-
-function renderFeaturedArticle(article) {
-  const imageUrl = article.coverImage
-    ? urlFor(article.coverImage)
-        .width(1400)
-        .height(900)
-        .fit("crop")
-        .auto("format")
-        .url()
-    : "";
-
-  const articleUrl = `/journal/${escapeHTML(article.slug)}/`;
-
-  return `
-    <section class="journal-featured">
-      <div class="journal-container">
-
-        <p class="journal-section-label">Featured Story</p>
-
-        <article class="featured-card">
-
-          ${
-            imageUrl
-              ? `
-                <div class="featured-image">
-                  <img
-                    src="${escapeHTML(imageUrl)}"
-                    alt="${escapeHTML(article.coverImageAlt || article.title)}"
-                  />
-                </div>
-              `
-              : ""
-          }
-
-          <div class="featured-content">
-
-            ${renderCategoryLabel(article.category)}
-
-            <h2>
-              <a href="${articleUrl}">
-                ${escapeHTML(article.title)}
-              </a>
-            </h2>
-
-            <p class="featured-excerpt">
-              ${escapeHTML(article.excerpt)}
-            </p>
-
-            <div class="article-meta">
-              <span>
-                ${escapeHTML(article.authorName || "Alexandra’s Floral")}
-              </span>
-              <span>·</span>
-              <span>
-                ${escapeHTML(formatDate(article.publishedAt))}
-              </span>
-            </div>
-
-            <a
-              href="${articleUrl}"
-              class="article-link"
-            >
-              Read Article →
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-    </section>
-  `;
-}
 function renderJournalPage(articles) {
-  const featured = articles.find((article) => article.featured) || articles[0];
-
-  const remaining = featured
-    ? articles.filter((article) => article._id !== featured._id)
-    : [];
+  const latestArticles = articles.slice(0, 2);
+  const remainingArticles = articles.slice(2);
 
   return `
     ${renderHead({
@@ -535,12 +545,19 @@ function renderJournalPage(articles) {
 
       <main class="journal-page">
 
-       <section class="journal-hero">
-  <div class="journal-hero-inner">
-    <h1>Journal</h1>
-  </div>
-</section>
+        <!-- JOURNAL HERO -->
+        <section class="journal-hero">
+          <div class="journal-hero-inner">
+            <h1>Journal</h1>
 
+            <p>
+              Floral inspiration, practical flower care, bridal stories,
+              plant notes and a look behind the scenes at Alexandra's Floral.
+            </p>
+          </div>
+        </section>
+
+        <!-- CATEGORY NAVIGATION -->
         <section class="journal-category-section">
           <div class="journal-container">
             ${renderCategoryNavigation()}
@@ -548,8 +565,50 @@ function renderJournalPage(articles) {
         </section>
 
         ${
-          featured
-            ? renderFeaturedArticle(featured)
+          articles.length
+            ? `
+              <!-- LATEST -->
+              ${
+                latestArticles.length
+                  ? `
+                    <section class="journal-grid-section">
+                      <div class="journal-container">
+
+                        <p class="journal-section-label">Latest</p>
+
+                        <div class="journal-grid">
+                          ${latestArticles.map(renderArticleCard).join("")}
+                        </div>
+
+                      </div>
+                    </section>
+                  `
+                  : ""
+              }
+
+              <!-- MORE FROM THE JOURNAL -->
+              ${
+                remainingArticles.length
+                  ? `
+                    <section class="journal-list-section">
+                      <div class="journal-container">
+
+                        <p class="journal-section-label">
+                          More from the Journal
+                        </p>
+
+                        <div class="journal-list">
+                          ${remainingArticles
+                            .map(renderArticleListItem)
+                            .join("")}
+                        </div>
+
+                      </div>
+                    </section>
+                  `
+                  : ""
+              }
+            `
             : `
               <section class="journal-empty">
                 <h2>Our Journal is coming soon.</h2>
@@ -558,24 +617,6 @@ function renderJournalPage(articles) {
                 </p>
               </section>
             `
-        }
-
-        ${
-          remaining.length
-            ? `
-              <section class="journal-grid-section">
-                <div class="journal-container">
-
-                  <p class="journal-section-label">Latest Stories</p>
-
-                  <div class="journal-grid">
-                    ${remaining.map(renderArticleCard).join("")}
-                  </div>
-
-                </div>
-              </section>
-            `
-            : ""
         }
 
       </main>
@@ -588,20 +629,18 @@ function renderJournalPage(articles) {
 }
 function renderCategoryTitle(categoryValue) {
   const titleLines = {
-    'floral-musings': ['Floral', 'Musings'],
-    'brides-of-alexandra': ['Brides', 'of', 'Alexandra'],
-    'beyond-the-rose': ['Beyond', 'the', 'Rose'],
-  }
+    "floral-musings": ["Floral", "Musings"],
+    "brides-of-alexandra": ["Brides", "of", "Alexandra"],
+    "beyond-the-rose": ["Beyond", "the", "Rose"],
+  };
 
-  const lines = titleLines[categoryValue] || []
+  const lines = titleLines[categoryValue] || [];
 
   return `
     <h1 class="journal-category-title">
-      ${lines
-        .map((line) => `<span>${escapeHTML(line)}</span>`)
-        .join('')}
+      ${lines.map((line) => `<span>${escapeHTML(line)}</span>`).join("")}
     </h1>
-  `
+  `;
 }
 function renderCategoryPage(articles, category) {
   const categoryArticles = articles.filter(
@@ -729,10 +768,12 @@ function renderArticlePage(article) {
           </p>
 
           <p class="article-byline">
-            ${escapeHTML(article.authorName || "Alexandra's Floral")}
-            ·
-            ${escapeHTML(formatDate(article.publishedAt))}
-          </p>
+  ${escapeHTML(article.authorName || "Alexandra's Floral")}
+  ·
+  ${escapeHTML(formatDate(article.publishedAt))}
+  ·
+  ${getReadingTime(article.body)} min read
+</p>
 
         </header>
 
@@ -815,7 +856,6 @@ fs.writeFileSync(
 
 console.log("Generated: journal/index.html");
 
-
 for (const article of articles) {
   const articleDirectory = path.join(journalDirectory, article.slug);
 
@@ -829,7 +869,7 @@ for (const article of articles) {
   console.log(`Generated: journal/${article.slug}/index.html`);
 }
 /*
- * Generate Journal category pages.
+ *  Journal category pages.
  */
 for (const category of JOURNAL_CATEGORIES) {
   const categoryDirectory = path.join(
