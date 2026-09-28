@@ -806,7 +806,7 @@ if (fs.existsSync(journalDirectory)) {
 fs.mkdirSync(journalDirectory, { recursive: true });
 
 /*
- * Generate Journal landing page.
+ * Journal landing page.
  */
 fs.writeFileSync(
   path.join(journalDirectory, "index.html"),
@@ -815,9 +815,7 @@ fs.writeFileSync(
 
 console.log("Generated: journal/index.html");
 
-/*
- * Generate individual article pages.
- */
+
 for (const article of articles) {
   const articleDirectory = path.join(journalDirectory, article.slug);
 
