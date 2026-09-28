@@ -1145,7 +1145,6 @@
   }
 }
 /* Tighten spacing around article headings */
-
 .article-content h2 {
   margin-top: 10px !important;
   margin-bottom: 8px !important;
@@ -1159,3 +1158,5 @@
 .article-content p:has(> br:only-child) {
   display: none;
 }
+
+/* Remove paragraphs containing only whitespace */
