@@ -373,33 +373,45 @@ function renderHead({
 }
 
 function renderPortableText(body = []) {
-  return toHTML(body, {
-    components: {
-      types: {
-        image: ({ value }) => {
-          if (!value?.asset?._ref) return "";
+  const cleanBody = body.filter((block) => {
+    if (block?._type !== "block") return true;
 
-          const imageUrl = urlFor(value).width(1400).auto("format").url();
+    const text = (block.children || [])
+      .map((child) => child.text || "")
+      .join("")
+      .trim();
 
-          const alt = escapeHTML(
-            value.alt || "Alexandra’s Floral Journal image",
-          );
+    return text.length > 0;
+  });
 
-          const caption = value.caption
-            ? `<figcaption>${escapeHTML(value.caption)}</figcaption>`
-            : "";
+  return toHTML(cleanBody, {
+    types: {
+      image: ({ value }) => {
+        if (!value?.asset?._ref) return "";
 
-          return `
-            <figure class="article-body-image">
-              <img
-                src="${escapeHTML(imageUrl)}"
-                alt="${alt}"
-                loading="lazy"
-              />
-              ${caption}
-            </figure>
-          `;
-        },
+        const imageUrl = urlFor(value)
+          .width(1400)
+          .auto("format")
+          .url();
+
+        const alt = escapeHTML(
+          value.alt || "Alexandra’s Floral Journal image",
+        );
+
+        const caption = value.caption
+          ? `<figcaption>${escapeHTML(value.caption)}</figcaption>`
+          : "";
+
+        return `
+          <figure class="article-body-image">
+            <img
+              src="${escapeHTML(imageUrl)}"
+              alt="${alt}"
+              loading="lazy"
+            />
+            ${caption}
+          </figure>
+        `;
       },
     },
   });

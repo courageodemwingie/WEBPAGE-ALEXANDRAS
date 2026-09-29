@@ -306,14 +306,23 @@
 }
 
 .article-content p {
-  margin-bottom: 1.6em;
+  margin: 0 0 18px;
   color: var(--text);
   font-size: 17px;
-  line-height: 1.9;
+  line-height: 1.8;
+}
+
+.article-content h1 {
+  margin: 56px 0 14px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: clamp(38px, 4.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .article-content h2 {
-  margin: 2.3em 0 0.75em;
+  margin: 48px 0 12px;
   color: var(--burgundy);
   font-family: var(--heading-font);
   font-size: clamp(32px, 4vw, 46px);
@@ -322,12 +331,39 @@
 }
 
 .article-content h3 {
-  margin: 2em 0 0.7em;
+  margin: 40px 0 10px;
   color: var(--burgundy);
   font-family: var(--heading-font);
-  font-size: 30px;
+  font-size: clamp(27px, 3vw, 34px);
   font-weight: 500;
   line-height: 1.15;
+}
+
+.article-content h4 {
+  margin: 32px 0 8px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.article-content h5 {
+  margin: 28px 0 8px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.article-content h6 {
+  margin: 24px 0 6px;
+  color: var(--burgundy);
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .article-content ul,
@@ -508,16 +544,42 @@
   .article-content {
     width: min(100% - 32px, 760px);
   }
-
   .article-content p,
   .article-content li {
     font-size: 16px;
   }
 
+  .article-content h1 {
+    margin-top: 40px;
+    font-size: clamp(34px, 8vw, 44px);
+  }
+
   .article-content h2 {
+    margin-top: 40px;
     font-size: clamp(30px, 8vw, 40px);
   }
+
+  .article-content h3 {
+    margin-top: 34px;
+    font-size: 28px;
+  }
+
+  .article-content h4 {
+    margin-top: 28px;
+    font-size: 23px;
+  }
+
+  .article-content h5 {
+    margin-top: 24px;
+    font-size: 20px;
+  }
+
+  .article-content h6 {
+    margin-top: 20px;
+    font-size: 18px;
+  }
 }
+  
 /* JOURNAL CATEGORIES */
 
 .journal-category-section {
@@ -643,9 +705,9 @@
 .journal-category-title span {
   display: block;
 }
-/* ========================================
+/* 
    ARTICLE PAGE — COVER IMAGE
-======================================== */
+ */
 
 .article-cover {
   width: min(680px, 100%);
@@ -669,9 +731,9 @@
     height: 280px;
   }
 }
-/* ========================================
+/* 
    LATEST — EDITORIAL IMAGE CARDS
-======================================== */
+ */
 
 .journal-grid {
   display: grid;
@@ -1144,19 +1206,3 @@
     font-size: 14px;
   }
 }
-/* Tighten spacing around article headings */
-.article-content h2 {
-  margin-top: 10px !important;
-  margin-bottom: 8px !important;
-}
-
-/* Remove empty Portable Text paragraphs creating large gaps */
-.article-content p:empty {
-  display: none;
-}
-
-.article-content p:has(> br:only-child) {
-  display: none;
-}
-
-/* Remove paragraphs containing only whitespace */
