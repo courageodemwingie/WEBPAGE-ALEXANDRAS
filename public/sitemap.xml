@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://www.alexandrasfloral.com/</loc>
-  </url>
-
-  <url>
-    <loc>https://www.alexandrasfloral.com/journal/</loc>
-  </url>
-
+  <url><loc>https://www.alexandrasfloral.com/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/category/floral-musings/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/category/brides-of-alexandra/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/category/beyond-the-rose/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/before-you-choose-your-bridal-bouquet-read-this/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/10-types-of-flowers-worth-knowing/</loc></url>
+  <url><loc>https://www.alexandrasfloral.com/journal/how-to-make-fresh-flowers-last-longer-a-simple-care-guide/</loc></url>
 </urlset>

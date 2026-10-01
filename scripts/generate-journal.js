@@ -881,7 +881,7 @@ for (const article of articles) {
   console.log(`Generated: journal/${article.slug}/index.html`);
 }
 /*
- *  Journal category pages.
+ * Journal category pages.
  */
 for (const category of JOURNAL_CATEGORIES) {
   const categoryDirectory = path.join(
@@ -899,3 +899,36 @@ for (const category of JOURNAL_CATEGORIES) {
 
   console.log(`Generated: journal/category/${category.value}/index.html`);
 }
+
+/*
+ * Generate sitemap.
+ */
+const sitemapUrls = [
+  `${siteUrl}/`,
+  `${siteUrl}/journal/`,
+  ...JOURNAL_CATEGORIES.map(
+    (category) => `${siteUrl}/journal/category/${category.value}/`,
+  ),
+  ...articles.map(
+    (article) => `${siteUrl}/journal/${article.slug}/`,
+  ),
+];
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls
+  .map((url) => `  <url><loc>${url}</loc></url>`)
+  .join("\n")}
+</urlset>
+`;
+
+const publicDirectory = path.join(projectRoot, "public");
+
+fs.mkdirSync(publicDirectory, { recursive: true });
+
+fs.writeFileSync(
+  path.join(publicDirectory, "sitemap.xml"),
+  sitemap,
+);
+
+console.log(`Generated sitemap.xml with ${sitemapUrls.length} URL(s).`);
