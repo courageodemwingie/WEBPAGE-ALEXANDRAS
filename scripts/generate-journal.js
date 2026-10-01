@@ -6,7 +6,7 @@ import { sanityClient } from "./sanity-client.js";
 
 const projectRoot = process.cwd();
 const journalDirectory = path.join(projectRoot, "journal");
-const siteUrl = "https://webpage-alexandras.vercel.app";
+const siteUrl = "https://www.alexandrasfloral.com";
 
 const imageBuilder = createImageUrlBuilder(sanityClient);
 
