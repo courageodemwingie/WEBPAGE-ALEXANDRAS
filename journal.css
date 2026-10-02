@@ -638,8 +638,6 @@
 }
 
 
-/* Category label shown on article cards/articles */
-
 .journal-category-label {
   display: inline-block;
   margin-bottom: 13px;
@@ -660,8 +658,6 @@
   opacity: 0.7;
 }
 
-
-/* Bring Featured Story closer to the category navigation */
 
 .journal-category-section + .journal-featured {
   padding-top: 42px;
@@ -1204,5 +1200,170 @@
 
   .journal-list-excerpt {
     font-size: 14px;
+  }
+}
+/* =========================================================
+   JOURNAL MUSIC
+   ========================================================= */
+
+.journal-music {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+}
+
+.journal-music-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: 106px;
+  height: 32px;
+  padding: 0 12px;
+
+  border: 1px solid rgba(107, 31, 50, 0.22);
+  border-radius: 999px;
+
+  background: rgba(247, 242, 239, 0.88);
+  color: var(--burgundy);
+
+  font-family: var(--body-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(64, 59, 57, 0.07);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.journal-music-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.journal-music-button:hover {
+  background: rgba(228, 206, 197, 0.92);
+  border-color: rgba(107, 31, 50, 0.32);
+}
+
+.journal-music-button:active {
+  transform: scale(0.97);
+}
+
+.journal-music-button.is-playing {
+  background: rgba(228, 206, 197, 0.92);
+}
+
+@media (max-width: 600px) {
+  .journal-music {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .journal-music-button {
+    width: 94px;
+    height: 30px;
+    padding: 0 10px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .journal-music-icon {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   JOURNAL MUSIC
+   ========================================================= */
+
+.journal-music {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+}
+
+.journal-music-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: 106px;
+  height: 32px;
+  padding: 0 12px;
+
+  border: 1px solid rgba(107, 31, 50, 0.22);
+  border-radius: 999px;
+
+  background: rgba(247, 242, 239, 0.88);
+  color: var(--burgundy);
+
+  font-family: var(--body-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(64, 59, 57, 0.07);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.journal-music-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.journal-music-button:hover {
+  background: rgba(228, 206, 197, 0.92);
+  border-color: rgba(107, 31, 50, 0.32);
+}
+
+.journal-music-button:active {
+  transform: scale(0.97);
+}
+
+.journal-music-button.is-playing {
+  background: rgba(228, 206, 197, 0.92);
+}
+
+@media (max-width: 600px) {
+  .journal-music {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .journal-music-button {
+    width: 94px;
+    height: 30px;
+    padding: 0 10px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .journal-music-icon {
+    font-size: 12px;
   }
 }

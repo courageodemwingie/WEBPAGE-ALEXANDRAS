@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 
 function getHtmlEntries(directory) {
   const entries = []
@@ -38,6 +38,7 @@ const rootDirectory = process.cwd()
 const htmlEntries = getHtmlEntries(rootDirectory)
 
 export default defineConfig({
+  publicDir: 'public',
   build: {
     rollupOptions: {
       input: htmlEntries,
