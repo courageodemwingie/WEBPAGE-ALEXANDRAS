@@ -272,13 +272,12 @@ p {
     height: 42px;
   }
 
-  .brand-name {
-    justify-self: center;
-    font-size: 17px;
-    letter-spacing: -0.02em;
-    padding: 0 8px;
-  }
-
+ .brand-name {
+  justify-self: center;
+  font-size: 5px;
+  letter-spacing: -0.02em;
+  padding: 0 8px;
+}
 .main-nav {
   display: flex;
   gap: 0;
